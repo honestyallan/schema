@@ -8,6 +8,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.http.HttpRequestDecoder;
+import io.netty.handler.codec.http.HttpResponseEncoder;
 
 public class TimeServer {
 
@@ -35,9 +37,13 @@ public class TimeServer {
 
     private class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
         @Override
-        protected void initChannel(SocketChannel arg0) throws Exception {
+        protected void initChannel(SocketChannel ch) throws Exception {
             System.out.println("server initChannel..");
-            arg0.pipeline().addLast(new TimeServerHandler());
+            // server端发送的是httpResponse，所以要使用HttpResponseEncoder进行编码
+            ch.pipeline().addLast(new HttpResponseEncoder());
+            // server端接收到的是httpRequest，所以要使用HttpRequestDecoder进行解码
+            ch.pipeline().addLast(new HttpRequestDecoder());
+            ch.pipeline().addLast(new TimeServerHandler());
         }
     }
 
