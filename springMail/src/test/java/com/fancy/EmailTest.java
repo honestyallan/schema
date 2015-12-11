@@ -20,7 +20,7 @@ public class EmailTest{
     public void testSendMail() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-smtp-mail.xml");
         Email mail = (Email)context.getBean("simpleMail");
-        mail.sendMail("Spring SMTP Mail Subject", "Spring SMTP Mail Text12112", "chenli@smarti.cn");
+        mail.sendMail("Spring SMTP Mail Subject", "Spring SMTP Mail Text12112", "收件人地址");
         //mail.sendMail("标题", "内容", "收件人邮箱");
     }
 
