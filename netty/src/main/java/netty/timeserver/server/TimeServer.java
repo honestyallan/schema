@@ -46,17 +46,24 @@ public class TimeServer {
             ch.pipeline().addLast(new TimeServerHandler());
         }
     }
-
-    public static void main(String[] args) throws Exception {
-        int port = 9000;
-        if (args != null && args.length > 0) {
-            try {
-                port = Integer.valueOf(args[0]);
-            } catch (NumberFormatException e) {
-
-            }
-        }
-
-        new TimeServer().bind(port);
-    }
+//
+//    public static void main(String[] args) throws Exception {
+//        int port = 9000;
+//        if (args != null && args.length > 0) {
+//            try {
+//                port = Integer.valueOf(args[0]);
+//            } catch (NumberFormatException e) {
+//
+//            }
+//        }
+//
+//        new TimeServer().bind(port);
+//    }
+    
+    public static void main(String[] args) {
+		Integer  a = Integer.valueOf(args[0]);
+		int b = Integer.valueOf(args[1]).intValue();
+		System.out.println(a == b);
+		System.out.println(a.equals(b));
+	}
 }
