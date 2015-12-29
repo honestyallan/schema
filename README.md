@@ -4,6 +4,8 @@
 mina 实例
 netty 实例
 Dubbo 实例
+spring mail 实例
+自定义注解 实例
 
 运行的时候可能会遇到解析不了XML文件的错误SAXException：
 
