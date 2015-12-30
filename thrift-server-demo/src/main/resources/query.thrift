@@ -19,3 +19,8 @@ struct GroupMemberListResult {
 service IGroupMemberQueryService {
 	 	GroupMemberListResult getAllGroupMembers(1:i64 arg0, 2:i64 arg1)		        	
 }
+
+service IHelloService{
+		void sayHello(1:string arg0)
+}
+
