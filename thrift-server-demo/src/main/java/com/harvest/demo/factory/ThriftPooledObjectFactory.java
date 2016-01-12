@@ -3,7 +3,6 @@ package com.harvest.demo.factory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.thrift.transport.TSocket;
-import org.apache.thrift.transport.TTransport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,7 +55,7 @@ public class ThriftPooledObjectFactory implements PooledObjectFactory {
 //			logger.error("error ThriftPooledObjectFactory()", e);
 //			throw new RuntimeException(e);
 //		}
-		
+		logger.info("makeObject ~~~");
 		 TSocket socket = new TSocket(serviceIP,servicePort,timeOut);
 		 socket.open();
 		 return (PooledObject) socket;

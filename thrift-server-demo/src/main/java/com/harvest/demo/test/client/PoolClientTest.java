@@ -1,4 +1,5 @@
-package com.harvest.demo.client;
+package com.harvest.demo.test.client;
+
 
 import java.io.IOException;
 
@@ -19,9 +20,6 @@ import com.harvest.demo.thrift.IGroupMemberQueryService;
 public class PoolClientTest {
 
 	Logger log = LoggerFactory.getLogger(PoolClientTest.class);
-//	public static final String SERVER_IP = "localhost";
-//	public static final int SERVER_PORT = 8090;
-//	public static final int TIMEOUT = 30000;
 	private ConnectionManager connectionManager;
 	
 	public ConnectionManager getConnectionManager() {
@@ -35,16 +33,11 @@ public class PoolClientTest {
 	}
 	public void startClient() {
 		log.info("startClient: ~~~~");
-//		ApplicationContext context = new ClassPathXmlApplicationContext("spring-thrift.xml"); 
-//		ConnectionManager connectionManager = (ConnectionManager)context.getBean("connectionManager");
 		
 		TTransport transport = null;
 		try {
-//			transport = new TSocket(SERVER_IP, SERVER_PORT, TIMEOUT);
 			// 协议要和服务端一致
 			TProtocol protocol = new TBinaryProtocol(this.connectionManager.getSocket());
-			// TProtocol protocol = new TCompactProtocol(transport);
-			// TProtocol protocol = new TJSONProtocol(transport);
 			IGroupMemberQueryService.Client client = new IGroupMemberQueryService.Client(
 					protocol);
 			transport.open();
