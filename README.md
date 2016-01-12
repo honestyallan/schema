@@ -48,6 +48,9 @@ thrift
     * TSimpleServer -  单线程服务器端使用标准的堵塞式I/O。
     * TThreadPoolServer -  多线程服务器端使用标准的堵塞式I/O。
     * TNonblockingServer – 多线程服务器端使用非堵塞式I/O，并且实现了Java中的NIO通道。
+	
+	
+提到池一般做过Java开发的肯定会想到ObjectPool，Apache Commons项目确实给我们的开发得来了很大的便利性，其中的pool项目正是我们实现thrift连接池的基础，当然也少不了神器spring framework。
 
 
 
