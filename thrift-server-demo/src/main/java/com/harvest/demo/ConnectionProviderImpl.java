@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import com.harvest.demo.factory.ThriftPoolFactory;
 import com.harvest.demo.factory.ThriftPooledObjectFactory;
 
 public class ConnectionProviderImpl implements ConnectionProvider,
@@ -50,7 +51,7 @@ public class ConnectionProviderImpl implements ConnectionProvider,
 	public void afterPropertiesSet() throws Exception {
 		logger.info("ConnectionProviderImpl start~~~~");
 		// 设置factory
-		ThriftPooledObjectFactory thriftPooledObjectFactory = new ThriftPooledObjectFactory(serviceIP,servicePort,conTimeOut);
+		ThriftPoolFactory thriftPooledObjectFactory = new ThriftPoolFactory(serviceIP,servicePort,conTimeOut);
 
 		GenericObjectPoolConfig config = new GenericObjectPoolConfig();
 		config.setMaxIdle(this.maxIdle);

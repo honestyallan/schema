@@ -38,7 +38,7 @@ public class PoolClientTest {
 //		ApplicationContext context = new ClassPathXmlApplicationContext("spring-thrift.xml"); 
 //		ConnectionManager connectionManager = (ConnectionManager)context.getBean("connectionManager");
 		
-		TTransport transport = null;
+//		TTransport transport = null;
 		try {
 //			transport = new TSocket(SERVER_IP, SERVER_PORT, TIMEOUT);
 			// 协议要和服务端一致
@@ -47,18 +47,13 @@ public class PoolClientTest {
 			// TProtocol protocol = new TJSONProtocol(transport);
 			IGroupMemberQueryService.Client client = new IGroupMemberQueryService.Client(
 					protocol);
-			transport.open();
 			GroupMemberListResult result = client.getAllGroupMembers(1l, 2l);
 			log.info("Thrify client result msg =: " + result.getErr_msg());
 		} catch (TTransportException e) {
 			e.printStackTrace();
 		} catch (TException e) {
 			e.printStackTrace();
-		} finally {
-			if (null != transport) {
-				transport.close();
-			}
-		}
+		} 
 	}
 
 	/**
@@ -67,7 +62,7 @@ public class PoolClientTest {
 	 */
 	public static void main(String[] args) throws IOException {
 		ApplicationContext context = new FileSystemXmlApplicationContext("/src/main/resources/spring-thrift.xml");
-		PoolClientTest client = new PoolClientTest();
+		PoolClientTest client = (PoolClientTest)context.getBean("client");
 		client.startClient();
 		System.in.read();
 	}

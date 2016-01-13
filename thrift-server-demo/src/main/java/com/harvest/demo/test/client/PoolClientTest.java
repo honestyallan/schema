@@ -60,7 +60,8 @@ public class PoolClientTest {
 	 */
 	public static void main(String[] args) throws IOException {
 		ApplicationContext context = new FileSystemXmlApplicationContext("/src/main/resources/spring-thrift.xml");
-		PoolClientTest client = new PoolClientTest();
+//		PoolClientTest client = new PoolClientTest();
+		PoolClientTest client = (PoolClientTest)context.getBean("client");
 		client.startClient();
 		System.in.read();
 	}

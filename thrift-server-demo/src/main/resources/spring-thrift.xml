@@ -17,21 +17,21 @@
         <property name="testOnBorrow" value="true" />
         <property name="testOnReturn" value="true" />
         <property name="testWhileIdle" value="true" />
-        <property name="conTimeOut" value="2000" />
+        <property name="conTimeOut" value="3000" />
     </bean>
     <!-- thrift连接管理配置  -->
     <bean id="connectionManager" class="com.harvest.demo.server.impl.manager.ConnectionManager">
         <property name="connectionProvider" ref="connectionProvider" />
     </bean>
     <!-- 客户端接口配置  -->
-    <bean class="com.harvest.demo.test.client.PoolClientTest">
+    <bean id="client" class="com.harvest.demo.client.PoolClientTest">
         <property name="connectionManager" ref="connectionManager" />
     </bean>
     <!-- thrift连接AOP配置  -->
     <aop:config proxy-target-class="true">
      	<!-- 切入点 -->
         <aop:pointcut id="clientMethods"
-            expression="execution(* com.harvest.demo.test.client.*.*(..))" />
+            expression="execution(* com.harvest.demo.client.*.*(..))" />
        	<!-- 在该切入点使用自定义拦截器 -->  
         <aop:advisor advice-ref="connectionManager" pointcut-ref="clientMethods" />
     </aop:config>
