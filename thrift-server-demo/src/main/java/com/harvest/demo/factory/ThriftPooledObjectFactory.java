@@ -2,8 +2,8 @@ package com.harvest.demo.factory;
 
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.PooledObjectFactory;
+import org.apache.commons.pool2.impl.DefaultPooledObject;
 import org.apache.thrift.transport.TSocket;
-import org.apache.thrift.transport.TTransport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,8 +37,9 @@ public class ThriftPooledObjectFactory<T> implements PooledObjectFactory<T> {
 
 	@Override
 	public void destroyObject(PooledObject<T> p) throws Exception {
-		if (p instanceof TSocket) {
-			TSocket socket = (TSocket) p;
+		Object obj = p.getObject();
+		if (obj instanceof TSocket) {
+			TSocket socket = (TSocket) obj;
 			if (socket.isOpen()) {
 				socket.close();
 			}
@@ -58,8 +59,8 @@ public class ThriftPooledObjectFactory<T> implements PooledObjectFactory<T> {
 //		}
 		logger.info("makeObject ~~~");
 		TSocket socket = new TSocket(serviceIP,servicePort,timeOut);
-//		 socket.open();
-		 return (PooledObject<T>) socket;
+		 socket.open();
+		 return new DefaultPooledObject<T>((T) socket);
 	}
 	
 
@@ -71,9 +72,11 @@ public class ThriftPooledObjectFactory<T> implements PooledObjectFactory<T> {
 
 	@Override
 	public boolean validateObject(PooledObject<T> p) {
+		logger.info("validateObject~~~~~~");
 		try {
-			if (p instanceof TSocket) {
-				TSocket thriftSocket = (TSocket) p;
+			Object obj = p.getObject();
+			if (obj instanceof TSocket) {
+				TSocket thriftSocket = (TSocket) obj;
 				if (thriftSocket.isOpen()) {
 					return true;
 				} else {
