@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 public class ThriftPoolFactory<T> extends BasePooledObjectFactory<T> {
 	/** 日志记录器 */
 	public static final Logger logger = LoggerFactory
-			.getLogger(ThriftPooledObjectFactory.class);
+			.getLogger(ThriftPoolFactory.class);
 	/** 服务的IP */
 	private String serviceIP;
 	/** 服务的端口 */
