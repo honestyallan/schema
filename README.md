@@ -62,4 +62,7 @@ jdk提供服务实现查找的一个工具类：java.util.ServiceLoader
 http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html  这个是官方的文档，有对service的详细介绍，包括规范以及一个简单的示例，这个是学习SPI必须看的文档；
 
 
+#thread  生产者，消费者
+
+
 
