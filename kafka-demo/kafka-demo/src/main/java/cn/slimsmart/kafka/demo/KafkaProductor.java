@@ -11,7 +11,7 @@ public class KafkaProductor {
 	public static void main(String[] args) throws InterruptedException {
 		Properties properties = new Properties();
 		System.out.println("启动productor");
-		properties.put("zk.connect", "admin.swiftpass.cn:2181");
+		properties.put("zk.connect", "192.168.2.199:2181");
 		properties.put("metadata.broker.list", "192.168.2.199:9092");
 		properties.put("zk.connectiontimeout.ms", "10000");
 		properties.put("serializer.class", "kafka.serializer.StringEncoder");

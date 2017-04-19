@@ -13,7 +13,7 @@ public class KafkaConsumer {
 	public static void main(String[] args) throws Exception {
 		Properties properties = new Properties();
 		properties.put("zookeeper.connect",
-				"admin.swiftpass.cn:2181");
+				"192.168.2.199:2181");
 		properties.put("auto.commit.enable", "true");
 		properties.put("auto.commit.interval.ms", "60000");
 		//消费段分组做主备，启动多个只有一个收消息
