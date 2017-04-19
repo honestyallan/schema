@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/kafka-demo/target/classes" />
+    <output-test url="file://$MODULE_DIR$/kafka-demo/target/test-classes" />
+    <content url="file://$MODULE_DIR$/kafka-demo">
+      <sourceFolder url="file://$MODULE_DIR$/kafka-demo/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/kafka-demo/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/kafka-demo/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/kafka-demo/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/kafka-demo/target" />
+    </content>
+    <orderEntry type="jdk" jdkName="1.6" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/soft/kafka_2.10-0.8.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
