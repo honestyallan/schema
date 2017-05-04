@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="louie-account" />
+        <module name="louie-common" />
+        <module name="louie-order" />
+        <module name="louie-webapi" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="http-dubbo-zipkin" target="1.5" />
+      <module name="louie-account" target="1.7" />
+      <module name="louie-common" target="1.5" />
+      <module name="louie-order" target="1.7" />
+      <module name="louie-webapi" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
