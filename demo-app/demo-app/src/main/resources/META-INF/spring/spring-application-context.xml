@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+        http://www.springframework.org/schema/cache
+		http://www.springframework.org/schema/cache/spring-cache.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+
+	<context:component-scan base-package="cn.vincent" use-default-filters="true">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- aop start -->
+	<!-- 被代理对象 -->
+	<bean id="demo1AdviceTestService" class="cn.vincent.demo.app.aop.commons.TestServiceImpl" />
+
+	<!-- MethodBeforeAdvice 前置通知 -->
+	<bean id="demo1Advice" class="cn.vincent.demo.app.aop.demo1.advice.Demo1Advice" />
+
+	<!-- 代理对象 -->
+	<bean id="demo1AdviceProxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<list><value>cn.vincent.demo.app.aop.commons.TestService</value></list>
+		</property>
+		<property name="interceptorNames">
+			<list><value>demo1Advice</value></list>
+		</property>
+		<property name="target" ref="demo1AdviceTestService" />
+	</bean>
+
+    <!-- 前置通知  后置通知  after-returning通知 环绕通知  异常通知 -->
+	<bean id="demo1XmlTestService" class="cn.vincent.demo.app.aop.commons.TestServiceImpl" />
+	<bean id="demo1XmlAopAspect" class="cn.vincent.demo.app.aop.demo1.xml.XmlAopAspect" />
+	<aop:config proxy-target-class="true">
+		<aop:aspect ref="demo1XmlAopAspect">
+            <aop:pointcut id="demo1XmlPoint" expression="execution(* cn.vincent.demo.app.aop.commons.TestServiceImpl.*(..))" />
+            <!-- 前置通知:在切入点选择的连接点处的方法之前执行的通知，该通知不影响正常程序执行流程（除非该通知抛出异常，该异常将中断当前方法链的执行而返回） -->
+            <aop:before pointcut-ref="demo1XmlPoint" method="methodBefore" />
+            <!-- 后置通知:在切入点选择的连接点处的方法正常执行完毕时执行的通知，必须是连接点处的方法没抛出任何异常正常返回时才调用后置通知 -->
+            <aop:after-returning pointcut-ref="demo1XmlPoint" method="methodAfterReturn" />
+            <!-- 后置异常通知:在切入点选择的连接点处的方法抛出异常返回时执行的通知，必须是连接点处的方法抛出任何异常返回时才调用异常通知。 -->
+            <aop:after-throwing pointcut-ref="demo1XmlPoint" method="methodAfterThr" />
+            <!-- 后置最终通知:在切入点选择的连接点处的方法返回时执行的通知，不管抛没抛出异常都执行，类似于Java中的finally块。 -->
+            <aop:after pointcut-ref="demo1XmlPoint" method="methodAfter" />
+            <!-- 环绕通知:环绕着在切入点选择的连接点处的方法所执行的通知，环绕通知可以在方法调用之前和之后自定义任何行为，并且可以决定是否执行连接点处的方法、替换返回值、抛出异常等等。  -->
+            <aop:around pointcut-ref="demo1XmlPoint" method="methodAround" />
+        </aop:aspect>
+	</aop:config>
+
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+    <bean id="demo1AnnoTestService" class="cn.vincent.demo.app.aop.commons.TestServiceImpl2" />
+    <bean id="demo1AnnoAspect" class="cn.vincent.demo.app.aop.demo1.annotation.LogAccessAspect" />
+
+    <bean id="demo2AnnoTestService" class="cn.vincent.demo.app.aop.commons.TestServiceImpl3" />
+    <bean id="demo2TestOrderAspect" class="cn.vincent.demo.app.aop.demo2.TestOrderAspect" />
+    <bean id="demo2TestOrderAspect2" class="cn.vincent.demo.app.aop.demo2.TestOrderAspect2" />
+    <bean id="demo2TestOrder2Aspect" class="cn.vincent.demo.app.aop.demo2.TestOrder2Aspect" />
+</beans>

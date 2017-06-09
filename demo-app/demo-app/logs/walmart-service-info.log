@@ -1,0 +1,2 @@
+I INFO || 05-26_12:01:39 AbstractApplicationContext.java 951 Closing WebApplicationContext for namespace 'SpringMVCDispatcherServlet-servlet': startup date [Mon May 22 18:35:15 CST 2017]; parent: Root WebApplicationContext 
+I INFO || 05-26_12:01:44 AbstractApplicationContext.java 951 Closing Root WebApplicationContext: startup date [Mon May 22 18:35:06 CST 2017]; root of context hierarchy 
