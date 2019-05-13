@@ -9,7 +9,7 @@
 	<description>demo-app</description>
 
 	<properties>
-		<java-version>1.7</java-version>
+		<java-version>1.8</java-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<argLine>-Dfile.encoding=UTF-8</argLine>
 
@@ -33,6 +33,8 @@
 		<servlet.api.version>3.1.0</servlet.api.version>
 		<servlet.jsp.api.version>2.2</servlet.jsp.api.version>
 		<junit.version>4.12</junit.version>
+
+		<guava.version>27.0.1-jre</guava.version>
 	</properties>
 
 	<dependencies>
@@ -207,6 +209,12 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
 		</dependency>
 	</dependencies>
 

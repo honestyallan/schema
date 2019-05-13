@@ -65,4 +65,26 @@
     <bean id="demo2TestOrderAspect" class="cn.vincent.demo.app.aop.demo2.TestOrderAspect" />
     <bean id="demo2TestOrderAspect2" class="cn.vincent.demo.app.aop.demo2.TestOrderAspect2" />
     <bean id="demo2TestOrder2Aspect" class="cn.vincent.demo.app.aop.demo2.TestOrder2Aspect" />
+
+	<!--<bean id="queryBizService" class="cn.vincent.demo.app.service.QueryBizService">
+		<property name="queryProcessorList">
+			<list>
+				<ref bean="queryAProcessor"/>
+				<ref bean="queryBProcessor"/>
+				<ref bean="queryCProcessor"/>
+			</list>
+		</property>
+
+	</bean>-->
+
+	<bean id="queryBizService" class="cn.vincent.demo.app.service.QueryBizService">
+		<property name="handlerMap">
+			<map>
+				<entry key="a"><ref bean="queryAProcessor"/></entry>
+				<entry key="b"><ref bean="queryBProcessor"/></entry>
+				<entry key="c"><ref bean="queryCProcessor"/></entry>
+			</map>
+		</property>
+
+	</bean>
 </beans>
