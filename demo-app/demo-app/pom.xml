@@ -34,7 +34,7 @@
 		<servlet.jsp.api.version>2.2</servlet.jsp.api.version>
 		<junit.version>4.12</junit.version>
 
-		<guava.version>27.0.1-jre</guava.version>
+		<guava.version>29.0-jre</guava.version>
 	</properties>
 
 	<dependencies>
