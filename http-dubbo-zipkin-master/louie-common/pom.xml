@@ -21,7 +21,7 @@
 	    <brave.version>4.0.6</brave.version>
 	    <zipkin-reporter.version>0.6.12</zipkin-reporter.version>
 		<fasterxml-jackson-version>2.4.1</fasterxml-jackson-version>
-		<dubbo-version>2.5.3</dubbo-version>
+		<dubbo-version>2.6.9</dubbo-version>
 	</properties>
 
 	<dependencies>
